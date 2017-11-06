@@ -2,6 +2,12 @@ import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+
+import { routerTransition } from '../app/core';
 
 @Component({
   selector: 'app-root',
@@ -28,9 +34,12 @@ export class AppComponent implements OnInit, OnDestroy {
   ];
   isAuthenticated;
 
-  constructor(private router: Router) { router = router; }
+  constructor(private router: Router) {
+    router = router;
+  }
 
   ngOnInit(): void {
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const currentRoute = this.router.routerState.snapshot.url;
