@@ -1,1 +1,11 @@
-Realtors Works
+<div class='container'>
+    <h3>Realtors</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let realtor of realtors | async" [ngClass]='animateOnRouteEnter'>
+        <h4 mat-line>{{realtor.name}}</h4>
+        <p mat-line> {{realtor.company}} </p>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+</div>
+

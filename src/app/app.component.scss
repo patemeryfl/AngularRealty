@@ -6,11 +6,6 @@ mat-sidenav-container {
   mat-toolbar {
     z-index: 1;
 
-    a {
-      font-size: 18px;
-      text-align: center;
-    }
-
     .nav-button {
       margin: 0 10px 0 0;
     }
@@ -72,71 +67,6 @@ mat-sidenav {
   .content {
     flex: 1 0 auto;
     position: relative;
-    height:100%;
   }
 
-  .footer {
-    padding: 0 15px;
-    text-align: center;
-    z-index: 1;
-
-    .row {
-      padding: 10px 0;
-
-      .links {
-        a {
-          transition: padding 0.5s;
-          display: inline-block;
-          font-size:10px!important;
-          padding: 0px 0px;
-
-          &:hover {
-            text-decoration: none;
-          }
-
-          span {
-            display: inline-block;
-            width: 90px;
-            padding: 0 0 0 0px;
-            overflow: hidden;
-            text-align: left;
-            white-space: nowrap;
-            transition: width 0.5s;
-          }
-        }
-
-        @media (max-width: map-get($grid-breakpoints, mat)) {
-          a {
-            padding: 20px;
-            float: right;
-
-            span {
-              width: 0;
-              padding: 0;
-            }
-          }
-          .sign-in-button {
-            min-width: 0;
-            padding: 0 10px;
-            display: block;
-            position: absolute!important;
-            margin-right: 500px!important;
-          }
-        }
-
-        @media (max-width: map-get($grid-breakpoints, sm)) {
-          a {
-            padding: 20px 5px;
-          }
-        }
-      }
-
-      .signature {
-        a {
-          float: right;
-        }
-        font-size:13px;
-      }
-    }
-  }
 }

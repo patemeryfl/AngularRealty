@@ -1,26 +1,57 @@
+import { Injectable } from '@angular/core';
+
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+
 import { Observable } from 'rxjs/Observable';
 
+@Injectable()
 export class AuthService {
-  private authState: Observable<firebase.User>;
-  private currentUser: firebase.User = null;
+  user: Observable<firebase.User>;
 
-constructor(public afAuth: AngularFireAuth) {
-    this.authState = this.afAuth.authState;
-    this.authState.subscribe(user => {
-      if (user) {
-        this.currentUser = user;
-      } else {
-        this.currentUser = null;
-      }
-    });
+  constructor(private firebaseAuth: AngularFireAuth) {
+    this.user = firebaseAuth.authState;
   }
-  getAuthState() {
-    return this.authState;
+
+  provider = new firebase.auth.GoogleAuthProvider();
+
+  signup(email: string, password: string) {
+    this.firebaseAuth
+      .auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('Success!', value);
+      })
+      .catch(err => {
+        console.log('Something went wrong:',err.message);
+      });
   }
+
+  login(email: string, password: string) {
+    this.firebaseAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('Nice, it worked!');
+      })
+      .catch(err => {
+        console.log('Something went wrong:',err.message);
+      });
+  }
+
   loginWithGoogle() {
-    return this.afAuth.auth.signInWithPopup(
-      new firebase.auth.GoogleAuthProvider());
+    this.firebaseAuth.auth.signInWithPopup(this.provider)
+    .then((res) => {
+      let token = res.credential.accessToken
+    }).catch((err) => {
+      console.log('Something went wrong', err.message)
+    })
   }
+
+  logout() {
+    this.firebaseAuth
+      .auth
+      .signOut();
+  }
+
 }

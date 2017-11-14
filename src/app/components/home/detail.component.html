@@ -1,0 +1,19 @@
+<img mat-card-image src='{{data.selection.image}}'>
+<mat-card-content>
+  <h3>{{data.selection.price | currency}}</h3>
+  {{data.selection.description}}<br>
+  <p>{{data.selection.type}}</p>
+  <strong>Address:</strong><p>{{data.selection.address}}</p>
+  <strong>City:</strong><p>{{data.selection.city}}</p>
+  <strong>Details:</strong>
+  <ul>
+    <li>Dishwasher: {{data.selection.features.dishwasher}}</li>
+    <li>Pet-Friendly: {{data.selection.features.pets}}</li>
+  </ul>
+
+  <button mat-button (click)="onClose()" tabindex="-1">Close</button>
+</mat-card-content>
+
+
+
+

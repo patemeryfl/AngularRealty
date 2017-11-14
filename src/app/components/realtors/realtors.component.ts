@@ -1,4 +1,8 @@
+import { ANIMATE_ON_ROUTE_ENTER } from './../../core/animations/router.transition';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+
 
 @Component({
   selector: 'app-realtors',
@@ -6,7 +10,12 @@ import { Component } from '@angular/core';
 })
 
 export class RealtorsComponent {
+  realtors: Observable<any[]>;
+  animateOnRouteEnter = ANIMATE_ON_ROUTE_ENTER;
 
-  constructor() {
+  constructor(public db: AngularFireDatabase) {
+    this.realtors = db.list('realtors/').valueChanges();
   }
 }
+
+

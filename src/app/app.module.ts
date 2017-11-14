@@ -9,6 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+import { AuthService } from './core/auth/auth.service';
+
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,9 +27,13 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     ComponentModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    // Firebase
+    AngularFireModule.initializeApp(environment.firebase, 'personalportfolio-1ca58'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

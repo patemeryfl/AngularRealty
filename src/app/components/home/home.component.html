@@ -1,7 +1,21 @@
-<mat-card>
-  <mat-card-title>Recent Listings</mat-card-title>
-  <mat-card-content>
-  </mat-card-content>
-</mat-card>
+<div class='container' style='height:625px!important; overflow-y:scroll; overflow-x:hidden'>
+  <h3>Latest Listings</h3>
+  <div *ngFor='let listing of listings | async;'>
+    <mat-card>
+        <mat-card-header>
+          <mat-card-title><h3>{{listing.title}}</h3></mat-card-title>
+          <mat-card-subtitle>{{listing.description}}</mat-card-subtitle>
+        </mat-card-header>
+          <img mat-card-image src='{{listing.image}}' class='listing-image'>
+        <mat-card-actions>
+            <button mat-button
+            (click)='showDetails(listing)'>MORE INFO</button>
+            <button mat-button>CONTACT REALTOR</button>
+          </mat-card-actions>
+      </mat-card>
+  </div>
+</div>
+
+
 
 

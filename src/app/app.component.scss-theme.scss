@@ -7,24 +7,19 @@
   mat-sidenav-container {
 
     mat-toolbar {
-      a {
-        padding:0px;
-        &.active {
-          color: mat-color($accent, default-contrast);
-          background-color: mat-color($accent);
-        }
-        &.hover {
-          color: black;
+      nav {
+        mat-button {
+          &.active {
+            color: mat-color($accent, default-contrast);
+            background-color: mat-color(blue);
+            border: none!important;
+          }
         }
       }
 
       .sign-in-button {
         color: mat-color($accent);
         border: 1px solid mat-color($accent);
-      }
-
-      .link {
-        color: mat-color($primary, default-contrast);
       }
     }
 

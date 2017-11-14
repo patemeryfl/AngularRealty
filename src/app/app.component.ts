@@ -1,3 +1,5 @@
+import { AuthService } from './core/auth/auth.service';
+import { routerTransition } from './core/animations/router.transition';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Router, NavigationEnd } from '@angular/router';
@@ -7,12 +9,11 @@ import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 
-import { routerTransition } from '../app/core';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [routerTransition]
 })
 
 export class AppComponent implements OnInit, OnDestroy {
@@ -29,14 +30,14 @@ export class AppComponent implements OnInit, OnDestroy {
     { link: 'profile', label: 'Profile' }
   ];
   navigationSideMenu = [
-    ...this.navigation,
-    { link: 'settings', label: 'Settings' }
+    ...this.navigation
   ];
-  isAuthenticated;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public authService: AuthService) {
     router = router;
   }
+
+  isAuthenticated = this.authService.user
 
   ngOnInit(): void {
 
@@ -56,12 +57,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  // onLoginClick() {
-  //   this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  // }
-
-  // onLogoutClick() {
-  //  this.auth.auth.signOut();
-  // }
+  onLogoutClick() {
+   this.authService.logout();
+  }
 
 }

@@ -2,17 +2,36 @@
 @import 'styles-variables';
 
 @import '~@angular/material/theming';
-@import "~@angular/material/prebuilt-themes/purple-green.css";
-
 @include mat-core();
-@import 'app/app.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include app-component-theme($theme);
 }
 
+$black-primary: mat-palette($mat-blue-grey, 600, 500, 900);
+$black-accent: mat-palette($mat-blue, A200);
+$black-warn: mat-palette($mat-red, A200);
+
+$black-theme: mat-dark-theme(
+  $black-primary,
+  $black-accent,
+  $black-warn
+);
+
+@include angular-material-theme($black-theme);
+
+
+body, html {
+  height: 100%;
+  overflow: hidden
+}
+
 * {
-  font-size: 20px;
+  font-size: 16px;
+}
+
+.container {
+  padding: 20px 20px 0px 20px;
 }
 
 /*Style for loader*/

@@ -19,7 +19,8 @@ import {
   MatCardModule,
   MatListModule,
   MatIconModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatDialogModule
 } from '@angular/material';
 
 
@@ -42,7 +43,7 @@ import {
     MatMenuModule,
     MatIconModule,
     MatTooltipModule,
-
+    MatDialogModule,
     MatGridListModule,
     MatPaginatorModule,
     MatTableModule
@@ -54,7 +55,7 @@ import {
 
     MatPaginatorModule,
     MatTableModule,
-
+    MatDialogModule,
     MatButtonModule,
     MatMenuModule,
     MatTabsModule,
