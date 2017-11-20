@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { ComponentModule } from './components/component.module';
-import { CoreModule } from './core/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +23,6 @@ import { AuthService } from './core/auth/auth.service';
   imports: [
     BrowserModule,
     FormsModule,
-    CoreModule,
     ComponentModule,
     AppRoutingModule,
     SharedModule,

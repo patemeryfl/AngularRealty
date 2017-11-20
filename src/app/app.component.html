@@ -16,11 +16,13 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span routerLink="" class="branding spacer hidden-sm-down text-center">{{activeRoute}}</span>
-      <button mat-button class="sign-in-button"
+
+      <button mat-button
               *ngIf="!(authService.user | async)"
               (click)="onLoginClick()">
         Sign in
       </button>
+
       <button *ngIf="authService.user | async"
               mat-icon-button
               [matMenuTriggerFor]="toolbarUserMenu">

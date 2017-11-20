@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
     router = router;
   }
 
-  isAuthenticated = this.authService.user
+  isAuthenticated = this.authService.user;
 
   ngOnInit(): void {
 
@@ -55,6 +55,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  onLoginClick() {
+    this.router.navigateByUrl('/profile');
   }
 
   onLogoutClick() {

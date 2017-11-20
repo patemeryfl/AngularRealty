@@ -1,10 +1,11 @@
 <div class='container' *ngIf='authService.user | async'>
-  <!-- <div *ngIf='authService.user.displayName | async'> -->
+  <div *ngIf='(authService.user | async)?.displayName'>
       <h3>Hello, {{ (authService.user | async)?.displayName}}</h3>
-  <!-- </div> -->
-  <!-- <h3>Hello, {{ (authService.user | async)?.email}}</h3> -->
+  </div>
+      <h3>Hello, {{ (authService.user | async)?.email}}</h3>
+
   <mat-card>
-      <img mat-card-image src='{{(authService.user | async)?.photoURL}}' style='height: 50px; width: 50px;'>
+      <img mat-card-image src='(authService.user | async)?.photoURL' style='height: 50px; width: 50px;'>
       <mat-card-content>
 
       </mat-card-content>
@@ -16,24 +17,31 @@
 
 <div class='container' *ngIf='!(authService.user | async)'>
   <mat-card>
-    <h3>Log In</h3>
-    <input type="text" [(ngModel)]="email" placeholder="email">
-    <input type="password" [(ngModel)]="password" placeholder="password">
+    <mat-card-header>
+        <h3>Log In</h3>
+    </mat-card-header>
 
-    <button (click)="signup()" [disabled]="!email || !password">
-      Signup
-    </button>
+    <mat-form-field>
+      <input type='text' [(ngModel)]="email" matInput placeholder="E-Mail">
+    </mat-form-field>
 
-    <button (click)="login()" [disabled]="!email || !password">
-      Login
-    </button>
+    <mat-form-field>
+      <input type='password' [(ngModel)]="password" matInput placeholder="Password">
+    </mat-form-field>
+    <hr>
+    <div class='text-center'>
+      <button mat-raised-button (click)="signup()" [disabled]="!email || !password">
+        Signup
+      </button>
 
-    <button (click)="loginWithGoogle()">
-      Google
-    </button>
+      <button mat-raised-button (click)="login()" [disabled]="!email || !password">
+        Login
+      </button>
+      <br>
 
-  <button (click)="logout()" *ngIf="authService.user | async">
-    Logout
-  </button>
+      <button mat-raised-button (click)="loginWithGoogle()">
+        Sign in with Google
+      </button>
+    </div>
   </mat-card>
 </div>

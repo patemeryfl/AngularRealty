@@ -5,13 +5,14 @@
   <p>{{data.selection.type}}</p>
   <strong>Address:</strong><p>{{data.selection.address}}</p>
   <strong>City:</strong><p>{{data.selection.city}}</p>
-  <strong>Details:</strong>
-  <ul>
-    <li>Dishwasher: {{data.selection.features.dishwasher}}</li>
-    <li>Pet-Friendly: {{data.selection.features.pets}}</li>
-  </ul>
-
-  <button mat-button (click)="onClose()" tabindex="-1">Close</button>
+  <div *ngIf="data.selection.features">
+    <strong>Details:</strong>
+    <ul>
+      <li>Dishwasher: {{data.selection.features.dishwasher}}</li>
+      <li>Pet-Friendly: {{data.selection.features.pets}}</li>
+    </ul>
+  </div>
+  <button mat-raised-button (click)="onClose()" tabindex="-1">Close</button>
 </mat-card-content>
 
 
