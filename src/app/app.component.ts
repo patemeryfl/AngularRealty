@@ -1,5 +1,5 @@
-import { AuthService } from './core/auth/auth.service';
-import { routerTransition } from './core/animations/router.transition';
+import { AuthService } from './core/auth.service';
+import { routerTransition } from './core/router.transition';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Router, NavigationEnd } from '@angular/router';

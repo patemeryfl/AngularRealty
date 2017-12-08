@@ -1,6 +1,6 @@
 <img mat-card-image src='{{data.selection.image}}'>
 <mat-card-content>
-  <h3>{{data.selection.price | currency}}</h3>
+  <h3>{{data.selection.price | currency:'USD':true}}</h3>
   {{data.selection.description}}<br>
   <p>{{data.selection.type}}</p>
   <strong>Address:</strong><p>{{data.selection.address}}</p>

@@ -1,4 +1,4 @@
-import { ANIMATE_ON_ROUTE_ENTER } from './../../core/animations/router.transition';
+import { ANIMATE_ON_ROUTE_ENTER } from './../../core/router.transition';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';

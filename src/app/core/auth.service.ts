@@ -16,36 +16,40 @@ export class AuthService {
   provider = new firebase.auth.GoogleAuthProvider();
 
   signup(email: string, password: string) {
+    const output = [];
     this.firebaseAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Success!', value);
+        output.push('Success!', value);
       })
       .catch(err => {
-        console.log('Something went wrong:',err.message);
+        output.push('Something went wrong:', err.message);
       });
   }
 
   login(email: string, password: string) {
+    const output = [];
     this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Nice, it worked!');
+        output.push('Success!');
       })
       .catch(err => {
-        console.log('Something went wrong:',err.message);
+        output.push('Something went wrong:', err.message);
       });
+      return output;
   }
 
   loginWithGoogle() {
+    const output = [];
     this.firebaseAuth.auth.signInWithPopup(this.provider)
     .then((res) => {
-      let token = res.credential.accessToken
+      const token = res.credential.accessToken;
     }).catch((err) => {
-      console.log('Something went wrong', err.message)
-    })
+      output.push('Something went wrong', err.message);
+    });
   }
 
   logout() {

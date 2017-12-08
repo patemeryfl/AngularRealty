@@ -1,6 +1,6 @@
 <div class='container' style='height:625px!important; overflow-y:scroll; overflow-x:hidden'>
   <h3>Latest Listings</h3>
-  <div *ngFor='let listing of listings | async;'>
+  <div *ngFor='let listing of listings | async;' [ngClass]="animateOnRouteEnter">
     <mat-card>
         <mat-card-header>
           <mat-card-title><h3>{{listing.title}}</h3></mat-card-title>

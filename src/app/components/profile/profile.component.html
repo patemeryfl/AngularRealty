@@ -2,16 +2,45 @@
   <div *ngIf='(authService.user | async)?.displayName'>
       <h3>Hello, {{ (authService.user | async)?.displayName}}</h3>
   </div>
+  <div *ngIf='!(authService.user | async)?.displayName'>
       <h3>Hello, {{ (authService.user | async)?.email}}</h3>
-
+  </div>
   <mat-card>
-      <img mat-card-image src='(authService.user | async)?.photoURL' style='height: 50px; width: 50px;'>
-      <mat-card-content>
+      <!-- <img mat-card-image src='{(authService.user | async)?.photoURL}' style='height: 50px; width: 50px;'> -->
+      <mat-grid-list cols="2">
+        <mat-grid-tile>
+          <mat-icon style='font-size: 130px;
+                           width: 40px;
+                           position: absolute;
+                           top: 0; left: 0;
+                           text-align: center;'>account_circle</mat-icon>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            Name:<br>
+            Location:<br><br><br>
+        </mat-grid-tile>
+      </mat-grid-list>
 
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>View Favorites</button>
-      </mat-card-actions>
+      <mat-grid-list cols="2" rowHeight="5:1">
+        <mat-grid-tile>
+          <button mat-raised-button>View Favorites</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-raised-button>Morgage Calculators</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-raised-button>Post Room for Rent</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-raised-button>Get Pre-Qualified</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-raised-button>Current Morgage Rates</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+        <button mat-raised-button>Leave Feedback</button>
+        </mat-grid-tile>
+      </mat-grid-list>
     </mat-card>
 </div>
 
@@ -42,6 +71,10 @@
       <button mat-raised-button (click)="loginWithGoogle()">
         Sign in with Google
       </button>
+      <br>
+      <div *ngIf='!output'>
+        {{output}}
+      </div>
     </div>
   </mat-card>
 </div>

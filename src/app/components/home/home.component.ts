@@ -1,3 +1,4 @@
+import { ANIMATE_ON_ROUTE_ENTER } from './../../core/router.transition';
 import { Observable } from 'rxjs/Observable';
 import { Component, Inject } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
@@ -14,6 +15,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatInputModule} from '@angular
 export class HomeComponent {
   listings: Observable<any[]>;
   selection: string;
+  animateOnRouteEnter = ANIMATE_ON_ROUTE_ENTER;
 
   constructor(public db: AngularFireDatabase, public dialog: MatDialog) {
     this.listings = db.list('listings/').valueChanges();

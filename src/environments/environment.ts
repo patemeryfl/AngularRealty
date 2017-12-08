@@ -14,3 +14,5 @@ export const environment = {
     messagingSenderId: '962889391011'
   }
 };
+
+export const API_KEY = 'AIzaSyDBNYTDEjQIJbABf0Z6DU8louDL1jhyptI';

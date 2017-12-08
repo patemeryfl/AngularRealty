@@ -1,13 +1,17 @@
 <div class='container'>
   <h3>Search</h3>
-  <form class="example-form text-center">
+  <form
+    #f="ngForm"
+    class="example-form text-center"
+    (ngSubmit)="getLocation(f.value)">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Enter a location" value="Boston, MA">
+      <input matInput name='location' ngModel autofocus
+             placeholder="Enter a location" value="Boston, MA">
     </mat-form-field>
-      <button mat-button>Submit</button>
+      <button mat-button type='submit'>Submit</button>
   </form>
 </div>
 
-<!-- <agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map> -->
+<agm-map [latitude]="Coordinates.lat" [longitude]="Coordinates.lng">
+    <agm-marker [latitude]="Coordinates.lat" [longitude]="Coordinates.lng"></agm-marker>
+</agm-map>
